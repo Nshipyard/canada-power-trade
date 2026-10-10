@@ -8,6 +8,7 @@ import "./globals.css";
 import { LangProvider } from "@/i18n";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://powertrade.canada.nshipyard.com"),
   title: "The Power Trade Margin Board: how much margin each Canada-US power intertie captures",
   description:
     "Canada's electricity export prices (CER) joined with US state retail electricity prices (EIA), 2010-2025, across six export corridors. The margin spread neither government publishes, with the 2018 East-West price inversion, the 2000-2001 California crisis spike, and $59.6B of cumulative margin. REST API, OpenAPI docs, and MCP tools. Open data, MIT licensed.",
@@ -18,6 +19,27 @@ export const metadata: Metadata = {
       "/favicon.ico",
     ],
     apple: "/apple-touch-icon.png",
+  },
+  openGraph: {
+    title: "The Power Trade Margin Board: how much margin each Canada-US power intertie captures",
+    description:
+      "Canada's electricity export prices (CER) joined with US state retail electricity prices (EIA), 2010-2025, across six export corridors. The margin spread neither government publishes, with the 2018 East-West price inversion, the 2000-2001 California crisis spike, and $59.6B of cumulative margin. REST API, OpenAPI docs, and MCP tools. Open data, MIT licensed.",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "The Power Trade Margin Board: how much margin each Canada-US power intertie captures",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Power Trade Margin Board: how much margin each Canada-US power intertie captures",
+    description:
+      "Canada's electricity export prices (CER) joined with US state retail electricity prices (EIA), 2010-2025, across six export corridors. The margin spread neither government publishes, with the 2018 East-West price inversion, the 2000-2001 California crisis spike, and $59.6B of cumulative margin. REST API, OpenAPI docs, and MCP tools. Open data, MIT licensed.",
+    images: ["/og-image.png"],
   },
 };
 
