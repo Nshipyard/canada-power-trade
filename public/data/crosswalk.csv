@@ -1,0 +1,56 @@
+destination_in_cer_data,market_region,us_states_in_basket,iso_rto
+Alaska,US West,"WA, OR, CA, ID, NV, AZ, UT, MT, WY, CO, NM",WECC / BPA / CAISO
+Arizona,US West,"WA, OR, CA, ID, NV, AZ, UT, MT, WY, CO, NM",WECC / BPA / CAISO
+Arkansas,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+California,US West,"WA, OR, CA, ID, NV, AZ, UT, MT, WY, CO, NM",WECC / BPA / CAISO
+Colorado,US West,"WA, OR, CA, ID, NV, AZ, UT, MT, WY, CO, NM",WECC / BPA / CAISO
+Connecticut,ISO-NE,"ME, NH, VT, MA, CT, RI",ISO New England
+Florida,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Idaho,US West,"WA, OR, CA, ID, NV, AZ, UT, MT, WY, CO, NM",WECC / BPA / CAISO
+Illinois,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Indiana,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Iowa,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Kansas,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Maine,ISO-NE,"ME, NH, VT, MA, CT, RI",ISO New England
+Maryland,PJM,"PA, NJ, MD, DE, VA, WV, OH, DC",PJM Interconnection
+Massachusetts,ISO-NE,"ME, NH, VT, MA, CT, RI",ISO New England
+Michigan,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Minn / N. Dakota,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Minnesota,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Mississippi,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Missouri,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Montana,US West,"WA, OR, CA, ID, NV, AZ, UT, MT, WY, CO, NM",WECC / BPA / CAISO
+Nebraska,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Nevada,US West,"WA, OR, CA, ID, NV, AZ, UT, MT, WY, CO, NM",WECC / BPA / CAISO
+New England-ISO,ISO-NE,"ME, NH, VT, MA, CT, RI",ISO New England
+New Hampshire,ISO-NE,"ME, NH, VT, MA, CT, RI",ISO New England
+New Jersey,PJM,"PA, NJ, MD, DE, VA, WV, OH, DC",PJM Interconnection
+New Mexico,US West,"WA, OR, CA, ID, NV, AZ, UT, MT, WY, CO, NM",WECC / BPA / CAISO
+New York,NYISO,NY,NYISO
+North Dakota,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Ohio,PJM,"PA, NJ, MD, DE, VA, WV, OH, DC",PJM Interconnection
+Oklahoma,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Oregon,US West,"WA, OR, CA, ID, NV, AZ, UT, MT, WY, CO, NM",WECC / BPA / CAISO
+Pennsylvania,PJM,"PA, NJ, MD, DE, VA, WV, OH, DC",PJM Interconnection
+Pennsylvania Jersey Maryland Power Pool,PJM,"PA, NJ, MD, DE, VA, WV, OH, DC",PJM Interconnection
+Rhode Island,ISO-NE,"ME, NH, VT, MA, CT, RI",ISO New England
+South Dakota,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Tennessee,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Texas,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Utah,US West,"WA, OR, CA, ID, NV, AZ, UT, MT, WY, CO, NM",WECC / BPA / CAISO
+Vermont,ISO-NE,"ME, NH, VT, MA, CT, RI",ISO New England
+Virginia,PJM,"PA, NJ, MD, DE, VA, WV, OH, DC",PJM Interconnection
+Washington,US West,"WA, OR, CA, ID, NV, AZ, UT, MT, WY, CO, NM",WECC / BPA / CAISO
+West Virginia,PJM,"PA, NJ, MD, DE, VA, WV, OH, DC",PJM Interconnection
+Wisconsin,US Midwest,"MN, ND, SD, NE, IA, KS, MO, WI, IL, IN, MI",MISO / SPP
+Wyoming,US West,"WA, OR, CA, ID, NV, AZ, UT, MT, WY, CO, NM",WECC / BPA / CAISO
+Alberta,West,,Canadian export origin region (CER grouping)
+British Columbia,West,,Canadian export origin region (CER grouping)
+Manitoba,West,,Canadian export origin region (CER grouping)
+New Brunswick,East,,Canadian export origin region (CER grouping)
+Newfoundland and Labrador,East,,Canadian export origin region (CER grouping)
+Nova Scotia,East,,Canadian export origin region (CER grouping)
+Ontario,East,,Canadian export origin region (CER grouping)
+Quebec,East,,Canadian export origin region (CER grouping)
+Québec,East,,Canadian export origin region (CER grouping)
+Saskatchewan,West,,Canadian export origin region (CER grouping)

@@ -1,0 +1,18 @@
+{
+  "built": "2026-10-10",
+  "margin_years": [
+    2010,
+    2025
+  ],
+  "margin_rows": 96,
+  "corridors": [
+    "East to ISO-NE",
+    "East to NYISO",
+    "East to PJM",
+    "East to US Midwest",
+    "West to US Midwest",
+    "West to US West"
+  ],
+  "quarantined_cer_rows": 2,
+  "latest_year": 2025
+}
