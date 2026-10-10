@@ -1,0 +1,33 @@
+# The Power Trade Margin Board
+
+Canada's electricity export prices (Canada Energy Regulator) joined with US state retail electricity prices (US Energy Information Administration), 2010-2025, across six export corridors. The margin spread neither government publishes.
+
+## What it answers
+
+- How much margin each Canada-US power intertie captures (East to ISO-NE captured $20.44B on 260.1 TWh, 2010-2025; $102.60/MWh in 2025 alone).
+- When western export prices moved above eastern prices (2018, peaking +$51.54/MWh in 2023; the 2000-2001 California crisis sent the West to $110.78/MWh).
+- What the buyer pays versus what Canada receives (2025: New England retail $155.85/MWh vs Canadian export $53.24/MWh; retail includes distribution, so this is the full published spread, not a wholesale margin).
+
+## Data
+
+- `data/margins_annual.csv`: 96 rows, margin per corridor per year, 2010-2025.
+- `data/inversion_annual.csv`: West vs East export prices, 1990-2026.
+- `data/crosswalk.csv`: hand-curated destination-to-market-region crosswalk (55 rows).
+- Pipeline: `scripts/build-data.py`. Sources: CER Electricity Trade Summary XLSX (updated 2026-09-25) + archived quarterly CSV (1990Q1-2018Q2) via open.canada.ca; EIA Form 861 annual files 2010-2025; Bank of Canada FXAUSDCAD (2017-2025), FRED DEXCAUS (1990-2016), BoC monthly (2026). Retrieved 2026-10-10.
+- Validation: reproduces the CER's published 2024 anchors exactly ($125.40 West, $58.87 East CAD/MWh).
+
+## API
+
+- `GET /api/v1/margins?corridor=&year=`: margin rows
+- `GET /api/v1/corridors`: the six corridors
+- `GET /api/v1/inversion`: 1990-2026 West/East series
+- `GET /api/v1/crosswalk`: the crosswalk
+- `GET /api/v1/summary`: headline aggregates
+- `GET /api/openapi.json`: OpenAPI 3.1
+- `POST /mcp`: MCP tools: export_lookup, margin_trend, intertie_ranking
+
+## Site
+
+Next.js 16, EN/FR. Explorer with margin-spread charts, showcase Q&A with "Cite this" buttons, methodology with crosswalk table, developers section with MCP connect prompts.
+
+Author: Richardson Dackam (https://x.com/richardsondx, https://github.com/richardsondx). MIT license. Not affiliated with the Government of Canada or the Canada Energy Regulator.

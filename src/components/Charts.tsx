@@ -29,6 +29,7 @@ function LineChart({
   zeroLine?: boolean;
 }) {
   const { lang } = useLang();
+  if (points.length < 2) return null;
   const W = 760;
   const H = 340;
   const PL = 56;
@@ -107,7 +108,7 @@ export function MarginSpreadChart({
   rows,
   corridor,
 }: {
-  rows: { year: number; export_price_usd_mwh: number; us_market_price_usd_mwh: number }[];
+  rows: { year: number; corridor: string; export_price_usd_mwh: number; us_market_price_usd_mwh: number }[];
   corridor: string;
 }) {
   const { t, lang } = useLang();
@@ -154,6 +155,7 @@ export function InversionGapChart({
 }) {
   const { lang } = useLang();
   const pts = rows.filter((r) => r.west_minus_east_usd !== null && r.year <= 2025);
+  if (pts.length === 0) return null;
   const W = 760;
   const H = 260;
   const PL = 56;
@@ -212,12 +214,13 @@ export function RankedBars({
   valueKey,
   valueLabel,
 }: {
-  rows: { corridor: string; [k: string]: string | number }[];
+  rows: { corridor: string; [k: string]: unknown }[];
   valueKey: string;
   valueLabel: string;
 }) {
   const { lang } = useLang();
   const sorted = [...rows].sort((a, b) => Number(b[valueKey]) - Number(a[valueKey]));
+  if (sorted.length === 0) return null;
   const max = Math.max(...sorted.map((r) => Number(r[valueKey])));
   const W = 760;
   const rowH = 52;

@@ -93,7 +93,7 @@ export default function Showcase() {
             a={t.showcase.a1}
             cite={cite("East to New England captured $20.44B of margin on 260.1 TWh of exports, 2010-2025; 2025 margin $102.60/MWh.")}
           >
-            <RankedBars rows={rows2025} valueKey="margin_usd_mwh" valueLabel="usd" />
+            <RankedBars rows={rows2025.map((r) => ({ corridor: r.corridor, v: r.margin_usd_mwh }))} valueKey="v" valueLabel="usd" />
           </Card>
 
           <Card

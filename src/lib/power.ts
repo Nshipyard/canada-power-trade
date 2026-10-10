@@ -44,12 +44,36 @@ export interface CrosswalkRow {
   iso_rto: string;
 }
 
+function splitCsvLine(ln: string): string[] {
+  const out: string[] = [];
+  let cur = "";
+  let inQ = false;
+  for (let i = 0; i < ln.length; i++) {
+    const c = ln[i];
+    if (c === '"') {
+      if (inQ && ln[i + 1] === '"') {
+        cur += '"';
+        i++;
+      } else {
+        inQ = !inQ;
+      }
+    } else if (c === "," && !inQ) {
+      out.push(cur);
+      cur = "";
+    } else {
+      cur += c;
+    }
+  }
+  out.push(cur);
+  return out;
+}
+
 function parseCsv<T>(name: string, map: (r: Record<string, string>) => T): T[] {
   const text = fs.readFileSync(path.join(DATA, name), "utf8");
   const lines = text.trim().split("\n");
-  const head = lines[0].split(",");
+  const head = splitCsvLine(lines[0]);
   return lines.slice(1).map((ln) => {
-    const cells = ln.split(",");
+    const cells = splitCsvLine(ln);
     const r: Record<string, string> = {};
     head.forEach((h, i) => {
       r[h.trim()] = (cells[i] ?? "").trim();
@@ -62,7 +86,6 @@ const num = (v: string) => (v === "" ? null : Number(v));
 
 let marginsCache: MarginRow[] | null = null;
 let inversionCache: InversionRow[] | null = null;
-let corridorsCache: CorridorInfo[] | null = null;
 let crosswalkCache: CrosswalkRow[] | null = null;
 
 export function getMargins(): MarginRow[] {
@@ -199,7 +222,7 @@ export function getSummary(): SummaryStats {
     c.vol += m.export_volume_mwh;
     cum.set(m.corridor, c);
   }
-  const topCum = [...cum.entries()].sort((a, b) => b[1].v - a[1].v)[0];
+  const topCum = Array.from(cum.entries()).sort((a, b) => b[1].v - a[1].v)[0];
   const rows2025 = margins.filter((m) => m.year === 2025).sort((a, b) => b.margin_usd_mwh - a.margin_usd_mwh);
   const post = inversion.filter((r) => r.year >= 2018 && r.west_minus_east_usd !== null);
   const peak = [...inversion]
@@ -209,7 +232,7 @@ export function getSummary(): SummaryStats {
   return {
     years: [Math.min(...margins.map((m) => m.year)), Math.max(...margins.map((m) => m.year))],
     corridor_count: new Set(margins.map((m) => m.corridor)).size,
-    cumulative_margin_usd_billions: Math.round(([...cum.values()].reduce((s, c) => s + c.v, 0) / 1000) * 10) / 10,
+    cumulative_margin_usd_billions: Math.round((Array.from(cum.values()).reduce((s, c) => s + c.v, 0) / 1000) * 10) / 10,
     top_corridor_2025: { corridor: rows2025[0].corridor, margin_usd_mwh: rows2025[0].margin_usd_mwh },
     top_corridor_cumulative: {
       corridor: topCum[0],

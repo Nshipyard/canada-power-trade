@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLang } from "@/i18n";
 import { OpenAILogo, AnthropicLogo, TerminalIcon, DotsIcon } from "./HarnessLogos";
 
@@ -29,12 +29,8 @@ export default function McpConnect({ config }: { config: McpConfig }) {
   const { t, lang } = useLang();
   const m = t.mcp;
   const [tab, setTab] = useState<TabId>("claudecode");
-  const [origin, setOrigin] = useState("");
+  const [origin] = useState(() => (typeof window !== "undefined" ? window.location.origin : ""));
   const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    setOrigin(window.location.origin);
-  }, []);
 
   const example = lang === "fr" ? config.exampleFr : config.exampleEn;
 
@@ -111,23 +107,23 @@ export default function McpConnect({ config }: { config: McpConfig }) {
             <p className="text-white/60">{m.otherBody}</p>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
               <span className="text-white/60">{m.mcpEndpoint}:</span>
-              <code className="font-mono text-[13px] text-white/85 break-all">{origin}/mcp</code>
+              <code suppressHydrationWarning className="font-mono text-[13px] text-white/85 break-all">{origin}/mcp</code>
             </div>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
               <span className="text-white/60">{m.openapiSpec}:</span>
-              <a href="/api/openapi.json" className="font-mono text-[13px] text-white/85 underline underline-offset-2 break-all">
+              <a suppressHydrationWarning href="/api/openapi.json" className="font-mono text-[13px] text-white/85 underline underline-offset-2 break-all">
                 {origin}/api/openapi.json
               </a>
             </div>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
               <span className="text-white/60">{m.restBase}:</span>
-              <code className="font-mono text-[13px] text-white/85 break-all">{origin}/api/v1</code>
+              <code suppressHydrationWarning className="font-mono text-[13px] text-white/85 break-all">{origin}/api/v1</code>
             </div>
           </div>
         ) : (
           <div className="px-6 py-5">
             {tab === "chatgpt" && <p className="mb-3 text-[14px] text-white/60">{m.chatgptNote}</p>}
-            <pre className="whitespace-pre-wrap font-mono text-[13.5px] leading-relaxed text-white/85">{activePrompt}</pre>
+            <pre suppressHydrationWarning className="whitespace-pre-wrap font-mono text-[13.5px] leading-relaxed text-white/85">{activePrompt}</pre>
           </div>
         )}
       </div>

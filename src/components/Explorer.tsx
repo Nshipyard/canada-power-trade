@@ -44,7 +44,7 @@ export default function Explorer() {
     .filter((r) => (year === "all" ? true : r.year === Number(year)))
     .sort((a, b) => b.year - a.year || b.margin_usd_mwh - a.margin_usd_mwh);
 
-  const chartCorridor = corridor === "all" ? null : corridor;
+  const chartRows = rows.filter((r) => (corridor === "all" ? true : r.corridor === corridor));
 
   return (
     <div>
@@ -77,14 +77,14 @@ export default function Explorer() {
         </select>
       </div>
 
-      {chartCorridor ? (
+      {corridor !== "all" ? (
         <div className="mt-10 rounded-[24px] border border-line bg-paper p-6 md:p-8">
           <h3 className="display text-[24px] md:text-[28px]">{t.explorer.chartTitle}</h3>
           <p className="mt-1 text-[14px] text-ink/60">
-            {chartCorridor} · {t.explorer.chartSub}
+            {corridor} · {t.explorer.chartSub}
           </p>
           <div className="mt-6">
-            <MarginSpreadChart rows={shown} corridor={chartCorridor} />
+            <MarginSpreadChart rows={chartRows} corridor={corridor} />
           </div>
         </div>
       ) : (

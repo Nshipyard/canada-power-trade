@@ -51,19 +51,28 @@ const TOOLS = [
   },
 ];
 
-function ok(id: unknown, result: unknown) {
+type JsonRpcId = string | number | null;
+interface JsonRpcMsg {
+  jsonrpc?: unknown;
+  method?: unknown;
+  id?: JsonRpcId;
+  params?: { name?: unknown; arguments?: Record<string, unknown> };
+}
+
+function ok(id: JsonRpcId, result: unknown) {
   return { jsonrpc: "2.0", id, result };
 }
-function err(id: unknown, code: number, message: string) {
+function err(id: JsonRpcId, code: number, message: string) {
   return { jsonrpc: "2.0", id, error: { code, message } };
 }
 function textResult(data: unknown) {
   return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
 }
 
-function handle(msg: any) {
-  if (!msg || msg.jsonrpc !== "2.0" || typeof msg.method !== "string") {
-    return err(msg?.id ?? null, -32600, "Invalid Request");
+function handle(raw: unknown) {
+  const msg = (raw ?? {}) as JsonRpcMsg;
+  if (msg.jsonrpc !== "2.0" || typeof msg.method !== "string") {
+    return err(msg.id ?? null, -32600, "Invalid Request");
   }
   const id = msg.id ?? null;
   switch (msg.method) {
@@ -78,7 +87,8 @@ function handle(msg: any) {
     case "tools/list":
       return ok(id, { tools: TOOLS });
     case "tools/call": {
-      const { name, arguments: args } = msg.params ?? {};
+      const { name, arguments: rawArgs } = msg.params ?? {};
+      const args: Record<string, unknown> = (rawArgs ?? {}) as Record<string, unknown>;
       try {
         const margins = getMargins();
         if (name === "export_lookup") {
@@ -116,7 +126,7 @@ function handle(msg: any) {
 }
 
 export async function POST(req: Request) {
-  let body: any;
+  let body: unknown;
   try {
     body = await req.json();
   } catch {
